@@ -1,0 +1,170 @@
+#nav-color{
+	background-color: #000;
+	color: #fff;
+}
+
+.row-centered {
+    text-align:center;
+    width: 100%;
+}
+
+.col-centered {
+    display:block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+
+.jumbotron-login{
+	max-width: 400px;
+	margin: 0px auto;
+	padding: 20px;
+}
+
+.form-login input{
+	margin-top: 10px;
+}
+
+#logout{
+	visibility: hidden;
+}
+
+.highlight-box{
+  background: #f8f8f8;
+  border-radius: 20px;
+  border: 1px solid #e7e7e7;
+}
+
+.row-50{
+  width: 50%;
+}
+
+.m-a-10{
+  margin: 10px;
+}
+
+.q-t-heading{
+  color: #777;
+  margin: 30px 110px;
+  font-size: 24px;
+}
+
+.q-title{
+  color: #777;
+  margin: 30px 110px;
+  font-size: 30px;
+  font-style: bold;
+}
+
+
+.q-t-content{
+  margin:80px 0px;
+}
+
+.q-t-table{
+  border:1px solid #e7e7e7;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.q-t-table thead{
+  font-size: 20px;
+  text-align: center;
+}
+
+.q-t-table thead tr td{
+  padding: 10px;
+}
+
+.q-t-table thead tr td:nth-child(1){
+  width:80px;
+}
+
+.q-t-table thead tr td:nth-child(2){
+  width:600px;
+}
+
+.q-t-table thead tr td:nth-child(3){
+  width:130px;
+}
+
+.q-t-table thead tr td:nth-child(4){
+  width:130px;
+}
+
+.q-t-table thead tr td:nth-child(5){
+  width:130px;
+}
+.border{
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.bg{
+  background: #39424e;
+  padding: 10px;
+}
+
+#dash{
+  color:#C2C7D0;
+  padding-left: 100px;
+}
+
+#dash:hover{
+  color:#fff;
+}
+
+#nav-li-border{
+  border-radius: 3px;
+}
+
+#q-t-wrapper{
+  width: 100%;
+  background-color: #fff;
+}
+
+.q-content{
+  margin-top: 40px;
+}
+
+.q-problem{
+  background: #eee;
+  border-radius: 10px 10px 0 0;
+}
+
+.q-problem h3{
+  text-decoration: underline;
+}
+
+.m-t-30{
+  margin-top: 30px;
+}
+
+#editor1{
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 500px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#editor-select{
+  display: inline;
+}
+
+.lang{
+  font-size: 18px;
+  margin-top: 5px;
+  margin-right: -25px;
+}
+

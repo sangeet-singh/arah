@@ -1,0 +1,61 @@
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp: In function 'int main()':
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:6:14: error: no match for 'operator>' in '(&(& std::cin.std::basic_istream<_CharT, _Traits>::operator>><char, std::char_traits<char> >((* & a)))->std::basic_istream<_CharT, _Traits>::operator>><char, std::char_traits<char> >((* & b)))->std::basic_istream<_CharT, _Traits>::operator>><char, std::char_traits<char> >((* & c)) > d'
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:6:14: note: candidates are:
+In file included from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_algobase.h:65:0,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/char_traits.h:41,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ios:41,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ostream:40,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/iostream:40,
+                 from E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:1:
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_pair.h:231:5: note: template<class _T1, class _T2> bool std::operator>(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_pair.h:231:5: note:   template argument deduction/substitution failed:
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:6:14: note:   'std::basic_istream<char>::__istream_type {aka std::basic_istream<char>}' is not derived from 'const std::pair<_T1, _T2>'
+In file included from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_algobase.h:68:0,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/char_traits.h:41,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ios:41,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ostream:40,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/iostream:40,
+                 from E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:1:
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_iterator.h:311:5: note: template<class _Iterator> bool std::operator>(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_iterator.h:311:5: note:   template argument deduction/substitution failed:
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:6:14: note:   'std::basic_istream<char>::__istream_type {aka std::basic_istream<char>}' is not derived from 'const std::reverse_iterator<_Iterator>'
+In file included from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_algobase.h:68:0,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/char_traits.h:41,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ios:41,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ostream:40,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/iostream:40,
+                 from E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:1:
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_iterator.h:361:5: note: template<class _IteratorL, class _IteratorR> bool std::operator>(const std::reverse_iterator<_IteratorL>&, const std::reverse_iterator<_IteratorR>&)
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/stl_iterator.h:361:5: note:   template argument deduction/substitution failed:
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:6:14: note:   'std::basic_istream<char>::__istream_type {aka std::basic_istream<char>}' is not derived from 'const std::reverse_iterator<_IteratorL>'
+In file included from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/string:54:0,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/locale_classes.h:42,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/ios_base.h:43,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ios:43,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ostream:40,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/iostream:40,
+                 from E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:1:
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/basic_string.h:2603:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator>(const std::basic_string<_CharT, _Traits, _Alloc>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/basic_string.h:2603:5: note:   template argument deduction/substitution failed:
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:6:14: note:   'std::basic_istream<char>::__istream_type {aka std::basic_istream<char>}' is not derived from 'const std::basic_string<_CharT, _Traits, _Alloc>'
+In file included from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/string:54:0,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/locale_classes.h:42,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/ios_base.h:43,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ios:43,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ostream:40,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/iostream:40,
+                 from E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:1:
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/basic_string.h:2615:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator>(const std::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/basic_string.h:2615:5: note:   template argument deduction/substitution failed:
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:6:14: note:   'std::basic_istream<char>::__istream_type {aka std::basic_istream<char>}' is not derived from 'const std::basic_string<_CharT, _Traits, _Alloc>'
+In file included from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/string:54:0,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/locale_classes.h:42,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/ios_base.h:43,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ios:43,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/ostream:40,
+                 from c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/iostream:40,
+                 from E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:1:
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/basic_string.h:2627:5: note: template<class _CharT, class _Traits, class _Alloc> bool std::operator>(const _CharT*, const std::basic_string<_CharT, _Traits, _Alloc>&)
+c:\program files (x86)\codeblocks\mingw\bin\../lib/gcc/mingw32/4.7.1/include/c++/bits/basic_string.h:2627:5: note:   template argument deduction/substitution failed:
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:6:14: note:   mismatched types 'const _CharT*' and 'std::basic_istream<char>'
+E:\wamp\www\arah/assets/files/code/57bd81787d787.cpp:7:1: error: expected ';' before 'cout'
