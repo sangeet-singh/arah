@@ -87,8 +87,13 @@ class Welcome extends CI_Controller {
 				$data['branch'] = $_SESSION['branch'];
 				$data['year'] = $_SESSION['year'];
 				$data['question'] = $this->question_model->getquestionbyid($qid);
+				$_SESSION['question'] = $data['question'];
 				if($data['question'] == 0){
 					show_404();
+				}
+				if(isset($_SESSION['error_message'])){
+					$data['error_message'] = $_SESSION['error_message'];
+					$data['code'] = $_SESSION['code'];
 				}
 				$this->load->view('question.php',$data);
 			}
@@ -100,6 +105,7 @@ class Welcome extends CI_Controller {
 	}
 	public function compile_all()
 	{
+		echo $_POST['editor1'];
 		$data = $this->data;
 		$data['editor1'] = $_POST['editor1'];
 		$data['filename'] = uniqid();
@@ -112,14 +118,12 @@ class Welcome extends CI_Controller {
 				$pos = strpos($message, '.cpp') + 3;
 				$compile['message'][$key] = substr($message, $pos);
 			}
-			$d['error_message'] = $compile['message'];
-			$d['assets'] = $data['assets'];
-			$d['editor1'] = $data['editor1'];
-			$this->load->view('index.php',$d);
+		$_SESSION['error_message'] = $compile['message'];
+		$_SESSION['code'] = $data['editor1'];
+		redirect($data['base_url'] . 'welcome/question/' . $_SESSION['qid']);
 		}
 		else{
-
-		$status = $this->cpp_model->execute($data);
+			$status = $this->cpp_model->execute($data);
 			if(!$status)
 				$this->load->view('success.php',$data);
 		}

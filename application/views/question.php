@@ -111,15 +111,43 @@
                 </div>
                 <div class="row" style="background:#fff">
                     <div class="col-md-10">
-                        <span id="editor1" name="editor1">
+                        <input type="hidden" id="prev-code" 
+                            value="<?php 
+                                        if(isset($code)){
+                                            echo $code;
+                                    }?>
+                                ">
+                        <span id="editor1">
                         </span>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 500px">
-                    <div>
-                        <strong>afsa</strong>
+                <div class="row">
+                    <div class="col-md-10 compile-form" >
+                        <?php 
+                            $editorCode['type'] = 'hidden';
+                            $editorCode['name'] = 'editor1';
+                            $editorCode['class'] = 'editor2';
+                            $editorCode['value'] = '';
+                            echo form_open($base_url . 'welcome/compile_all', 'class="form-login"');
+                            echo form_input($editorCode);
+                            echo form_submit('submit','Compile and Run', 'class="btn btn-primary"');
+                        ?>
                     </div>
                 </div>
+                <?php if(isset($code)){ ?>
+                    <div class="row">
+                        <div class="col-md-10 highlight-box">
+                            <p>
+                                <?php foreach ($error_message as $error) {
+                                    echo $error . '<br>';
+
+                                }
+                                ?>
+                            </p>
+
+                        </div>
+                    </div>
+                <?php }?>
             </div>
         </div>
 
@@ -148,19 +176,22 @@
     <!--CodeMirror-->
     <script src="<?php echo $assets; ?>vendor/ace-builds/src-noconflict/ace.js"></script>
     <script>
-    var editor = ace.edit("editor1");
-    editor.setTheme("ace/theme/ambiance");
-    editor.getSession().setMode("ace/mode/c_cpp");
-    editor.setShowPrintMargin(false);
-    $(document).ready(function(){
-        console.log("1");
-        $('#editor-select').on('change',function(){
-            var env = this.value;
-            editor.getSession().setMode("ace/mode/" + env);
+        var editor = ace.edit("editor1");
+        editor.setTheme("ace/theme/ambiance");
+        editor.getSession().setMode("ace/mode/c_cpp");
+        editor.setShowPrintMargin(false);
+        editor.setValue($('#prev-code').val(),-1);
+        $(document).ready(function(){
+            $('#editor-select').on('change',function(){
+                var env = this.value;
+                editor.getSession().setMode("ace/mode/" + env);
+            });
+            $('.btn-primary').click(function(e){
+                var data = editor.getValue();
+                $('.editor2').val(data);
+                
+            });
         });
-    });
     </script>
-
 </body>
-
 </html>
