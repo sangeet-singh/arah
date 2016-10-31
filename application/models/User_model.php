@@ -30,5 +30,14 @@ class User_model extends CI_Model {
 		else
 			$_SESSION['loggedin'] = 0;
 	}
+	public function signin($signin_data){
+		$this->db->insert('user',$signin_data);
+		$_SESSION['loggedin'] = 1;
+		$_SESSION['u_name'] = $signin_data['u_name'];
+		$_SESSION['institute'] = $signin_data['institute'];
+		$_SESSION['branch'] = $signin_data['branch'];
+		$_SESSION['year'] = $signin_data['year'];
+		return;
+	}
 }
 ?>
