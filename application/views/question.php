@@ -33,7 +33,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
 </head>
 
 <body background="#fff">
@@ -112,11 +112,11 @@
                 <div class="row" style="background:#fff">
                     <div class="col-md-10">
                         <span id="editor1" name="editor1">
-                        
-                            </span>                        
+                        </span>                        
                     </div>
                 </div>
                 <div class="row" style="margin-top: 500px">
+                    <strong>afsa</strong>
                     <div>
                         <?php echo form_open($base_url . 'welcome/compile_all', 'class="form-login"'); 
                         
@@ -133,7 +133,6 @@
     </div>
     <!-- /#wrapper -->
 
-    
     <script src="<?php echo $assets; ?>vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo $assets; ?>vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo $assets; ?>js/jquery.easing.min.js"></script>
