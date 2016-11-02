@@ -158,4 +158,31 @@ class Welcome extends CI_Controller {
 		unset($_SESSION['u_name']);
 		redirect($data['base_url'] . 'welcome/login/');
 	}
+
+	//here signin = signup
+	public function signin(){
+		$data = $this->data;
+		if(isset($_SESSION['loggedin'])){
+			if($_SESSION['loggedin']==1){
+				$data['loggedin'] = 1;
+				$data['u_name'] = $_SESSION['u_name'];
+				redirect($data['base_url'] . 'welcome/index/');
+			}
+		}
+		if(isset($_POST['username'])&&isset($_POST['password'])&&isset($_POST['institute'])&&isset($_POST['year'])&&isset($_POST['branch'])){//u_name,pass,institute,year,branch
+			$signin_data['u_name'] = $_POST['username'];
+			$signin_data['u_pass'] = $_POST['password'];
+			$signin_data['institute'] = $_POST['institute'];
+			$signin_data['year'] = $_POST['year'];
+			$signin_data['branch'] = $_POST['branch'];
+			$this->user_model->signin($signin_data);
+			if($_SESSION['loggedin']==1)
+				redirect($data['base_url']. 'welcome/index/');
+			else
+				$this->load->view('signin.php',$data);
+		}
+		else{
+			$this->load->view('signin.php',$data);
+		}
+	}
 }

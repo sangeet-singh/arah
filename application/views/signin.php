@@ -62,16 +62,16 @@
         <div class="row row-centered">
             <div class="col-centered">
                 <div class="jumbotron jumbotron-login">
-                    <h2>Login</h2>
-                    <?php echo form_open($base_url . 'welcome/login', 'class="form-login"'); 
-                        echo form_input('username', 'sangeet') . '<br / >';
-                        echo form_password('password','') . '<br />';
-                        echo form_submit('submit','submit');
-                        
+                    <h2>Sign up</h2>
+                    <?php echo form_open($base_url . 'welcome/signin', 'class="form-login"'); 
+                        echo form_input('username', '','placeholder=username') . '<br / >';
+                        echo form_password('password','','placeholder=password') . '<br />';
+                        echo form_input('institute','', 'placeholder=Institute name') . '<br / >';
+                        echo form_input('year', '', 'placeholder=Year') . '<br / >';
+                        echo form_input('branch','', 'placeholder=Branch') . '<br / >';
+                        echo form_submit('submit','Submit');
+                        echo form_close();
                     ?>
-                    <!--<button onClick="return redirect('<?php echo $base_url . 'welcome/signin'?>');">Register</button>-->
-                    <button><a href="<?php echo $base_url . 'welcome/signin'?>">Register</a></button>
-                    
                 </div>
             </div>
         </div>
