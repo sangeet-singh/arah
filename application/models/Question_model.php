@@ -24,5 +24,22 @@ class Question_model extends CI_Model {
 			return 0;
 		return $question;
 	}
+	public function addquestion($qs_data){
+		$paths = array(
+			'inputpath' => FCPATH . 'assets/files/input/',
+			'resultpath' => FCPATH . 'assets/files/result/');
+		$inputfile=uniqid();
+		$resultfile=uniqid();
+		write_file($paths['inputpath'].$inputfile.'.txt', $qs_data['input']);
+		write_file($paths['resultpath'].$resultfile.'.txt', $qs_data['result']);
+		$qs['qid']=$qs_data['qid'];
+		$qs['html']=$qs_data['html'];
+		$qs['points']=$qs_data['points'];
+		$qs['difficulty']=$qs_data['difficulty'];
+		$qs['title']=$qs_data['title'];
+		$qs['input']=$inputfile;
+		$qs['result']=$resultfile;
+		$this->db->insert('questions',$qs);
+	}
 }
 ?>

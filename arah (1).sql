@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2016 at 07:48 AM
+-- Generation Time: Nov 10, 2016 at 11:47 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -23,27 +23,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gameplay`
+--
+
+CREATE TABLE IF NOT EXISTS `gameplay` (
+  `u_id` int(11) NOT NULL,
+  `qid` int(11) NOT NULL,
+  `filename` varchar(13) NOT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`u_id`,`qid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gameplay`
+--
+
+INSERT INTO `gameplay` (`u_id`, `qid`, `filename`, `score`) VALUES
+(4, 111, '58244768b990e', 30);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `questions`
 --
 
 CREATE TABLE IF NOT EXISTS `questions` (
-  `qid` int(11) NOT NULL AUTO_INCREMENT,
+  `qid` int(11) NOT NULL,
   `html` varchar(2000) NOT NULL,
   `points` int(4) NOT NULL,
   `difficulty` varchar(10) NOT NULL,
-  `filename` varchar(13) NOT NULL,
+  `input` varchar(13) NOT NULL,
   `title` varchar(400) NOT NULL,
+  `result` varchar(13) NOT NULL,
   PRIMARY KEY (`qid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`qid`, `html`, `points`, `difficulty`, `filename`, `title`) VALUES
-(1, '<strong>Objective</strong>\n<p>\nIn this challenge, we review some basic concepts that will get you started with this series. You will need to use the same (or similar) syntax to read input and write output in challenges throughout HackerRank. Check out the Tutorial tab for learning materials and an instructional video!</p>\n<strong>Task </strong>\n<p>To complete this challenge, you must save a line of input from stdin to a variable, print Hello, World. on a single line, and finally print the value of your variable on a second line.</p>', 0, 'easy', '57bd1743d1bfc', 'Day 0: Hello, World.'),
-(2, 'http://localhost/phpmyadmin/#PMAURL-19:tbl_change.php?db=arah&table=questions&server=1&target=&token=7732959bafc9ee7fc2fbce1fb5d58cb6', 20, 'difficult', 'void', 'Day 1: Data Types'),
-(3, 'http://localhost/phpmyadmin/#PMAURL-19:tbl_change.php?db=arah&table=questions&server=1&target=&token=7732959bafc9ee7fc2fbce1fb5d58cb6', 50, 'Advanced', 'void', 'Day 3: Intro to Conditional Statements');
+INSERT INTO `questions` (`qid`, `html`, `points`, `difficulty`, `input`, `title`, `result`) VALUES
+(1, '<strong>Objective</strong>\n<p>\nIn this challenge, we review some basic concepts that will get you started with this series. You will need to use the same (or similar) syntax to read input and write output in challenges throughout HackerRank. Check out the Tutorial tab for learning materials and an instructional video!</p>\n<strong>Task </strong>\n<p>To complete this challenge, you must save a line of input from stdin to a variable, print Hello, World. on a single line, and finally print the value of your variable on a second line.</p>', 0, 'easy', '57bd1743d1bfc', 'Day 0: Hello, World.', ''),
+(2, 'http://localhost/phpmyadmin/#PMAURL-19:tbl_change.php?db=arah&table=questions&server=1&target=&token=7732959bafc9ee7fc2fbce1fb5d58cb6', 20, 'difficult', 'void', 'Day 1: Data Types', ''),
+(3, 'http://localhost/phpmyadmin/#PMAURL-19:tbl_change.php?db=arah&table=questions&server=1&target=&token=7732959bafc9ee7fc2fbce1fb5d58cb6', 50, 'Advanced', 'void', 'Day 3: Intro to Conditional Statements', ''),
+(111, '1', 30, 'Easy', '5821b7022de0b', '1', '5821b7022de12');
 
 -- --------------------------------------------------------
 
@@ -114,15 +137,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `institute` varchar(60) NOT NULL,
   `year` varchar(20) NOT NULL,
   `branch` varchar(60) NOT NULL,
+  `is_admin` int(1) NOT NULL DEFAULT '0',
+  `score` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`u_id`,`u_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`u_id`, `u_name`, `u_pass`, `institute`, `year`, `branch`) VALUES
-(1, 'sangeet', 'pass', 'NIT Rourkela', 'Third', 'Computer Science and Engineering');
+INSERT INTO `user` (`u_id`, `u_name`, `u_pass`, `institute`, `year`, `branch`, `is_admin`, `score`) VALUES
+(1, 'sangeet', 'pass', 'NIT Rourkela', 'Third', 'Computer Science and Engineering', 1, 0),
+(4, 'alolika', 'pass', 'NITR', 'Third', 'CSE', 0, 0),
+(5, '', '', '', '', '', 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -55,6 +55,25 @@ class Welcome extends CI_Controller {
 		else
 			redirect($data['base_url'] . 'welcome/login/');
 	}
+
+	public function admin(){
+		$data = $this->data;
+		$data['loggedin'] = 0;
+		if(isset($_SESSION['loggedin'])){
+			if($_SESSION['loggedin']==1&&$_SESSION['is_admin']==1){
+				$data['loggedin'] = 1;
+				$data['name'] = $_SESSION['u_name'];
+				$data['institute'] = $_SESSION['institute'];
+				$data['branch'] = $_SESSION['branch'];
+				$data['year'] = $_SESSION['year'];
+				$this->load->view('admin.php',$data);
+			}
+			else
+				redirect($data['base_url'] . 'welcome/login/');
+		}
+		else
+			redirect($data['base_url'] . 'welcome/login/');
+	}
 	public function allquestions()
 	{
 		$data = $this->data;
@@ -77,6 +96,13 @@ class Welcome extends CI_Controller {
 	}
 	public function question($qid)
 	{
+		if(isset($_SESSION['question'])){
+			/*if($_SESSION['question'][0]['qid']!=$qid){
+				unset($_SESSION['question']);
+				unset($_SESSION['code']);
+				unset($_SESSION['error_message']);
+			}*/
+		}
 		$data = $this->data;
 		$data['loggedin'] = 0;
 		if(isset($_SESSION['loggedin'])){
@@ -105,27 +131,41 @@ class Welcome extends CI_Controller {
 	}
 	public function compile_all()
 	{
-		echo $_POST['editor1'];
 		$data = $this->data;
 		$data['editor1'] = $_POST['editor1'];
 		$data['filename'] = uniqid();
 		$_SESSION['filename'] = $data['filename'];
-		$_SESSION['qid'] = 1;				//hardcoding for testing purpose
-		$data['qid'] = $_SESSION['qid'];
+		$data['qid'] = $_SESSION['question'][0]['qid'];
 		$compile = $this->cpp_model->compile($data);
 		if( $compile['status'] ){
 			foreach ($compile['message'] as $key => $message) {
 				$pos = strpos($message, '.cpp') + 3;
-				$compile['message'][$key] = substr($message, $pos);
+				$compile['message'][$key] = substr($message, $pos);		//??
 			}
-		$_SESSION['error_message'] = $compile['message'];
-		$_SESSION['code'] = $data['editor1'];
-		redirect($data['base_url'] . 'welcome/question/' . $_SESSION['qid']);
+			$_SESSION['error_message'] = $compile['message'];
+			$_SESSION['code'] = $data['editor1'];//delete file
+			redirect($data['base_url'] . 'welcome/question/' . $_SESSION['question'][0]['qid']);
 		}
 		else{
 			$status = $this->cpp_model->execute($data);
-			if(!$status)
-				$this->load->view('success.php',$data);
+			if(!$status){
+				$match = $this->cpp_model->matchSolution($data);
+				$d['score'] = $match['score'];
+				$d['qid'] = $data['qid'];
+				$d['filename'] = $data['filename'];
+				$this->user_model->success($d);
+				if($match['correct']==1)
+					$this->load->view('success.php',$data);
+				else{
+					$_SESSION['error_message'] = array();
+					$_SESSION['error_message'][0] = "Some Test Cases not passed";
+					$_SESSION['code'] = $data['editor1'];
+					redirect($data['base_url'] . 'welcome/question/' . $_SESSION['question'][0]['qid']);
+				}
+			}
+			else{
+				show_404();
+			}
 		}
 	}
 
@@ -142,8 +182,10 @@ class Welcome extends CI_Controller {
 			$login_data['username'] = $_POST['username'];
 			$login_data['password'] = $_POST['password'];
 			$this->user_model->login($login_data);
-			if($_SESSION['loggedin']==1)
+			if($_SESSION['loggedin']==1&&!$_SESSION['is_admin'])
 				redirect($data['base_url']. 'welcome/index/');
+			else if($_SESSION['loggedin']==1&&$_SESSION['is_admin'])
+				redirect($data['base_url'] . 'welcome/admin/');
 			else
 				$this->load->view('login.php',$data);
 		}
@@ -156,6 +198,8 @@ class Welcome extends CI_Controller {
 		$data = $this->data;
 		unset($_SESSION['loggedin']);
 		unset($_SESSION['u_name']);
+		unset($_SESSION['code']);
+		unset($_SESSION['error_message']);
 		redirect($data['base_url'] . 'welcome/login/');
 	}
 
@@ -184,5 +228,31 @@ class Welcome extends CI_Controller {
 		else{
 			$this->load->view('signin.php',$data);
 		}
+	}
+	public function add_question(){
+		$data=$this->data;
+		print_r($_POST);
+		if(isset($_POST['qid'])&&isset($_POST['points'])&&isset($_POST['difficulty'])&&isset($_POST['html'])&&isset($_POST['title'])&&isset($_POST['input'])&&isset($_POST['result'])){//u_name,pass,institute,year,branch
+			echo "Hi gon 1";
+			$qs_data['qid'] = $_POST['qid'];
+			$qs_data['points'] = $_POST['points'];
+			$qs_data['difficulty'] = $_POST['difficulty'];
+			$qs_data['html'] = $_POST['html'];
+			$qs_data['title']=$_POST['title'];
+			$qs_data['input'] = $_POST['input'];
+			$qs_data['result'] = $_POST['result'];
+			$this->question_model->addquestion($qs_data);
+			if($_SESSION['loggedin']==1)
+				redirect($data['base_url']. 'welcome/admin/');
+			else
+				$this->load->view('login.php',$data);
+		}
+		else{
+			$this->load->view('login.php',$data);
+		}
+	}
+	public function getPrevCOde()
+	{
+		return "balle balle";
 	}
 }

@@ -38,6 +38,9 @@
         <p>
             The code compiled and executed successfully.
         </p>
+        <p>
+            <button><a href="<?php echo $base_url . 'welcome/allquestions'?>">Next question</a></button>
+        </p>
     </div>
     
     <!-- jQuery -->

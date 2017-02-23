@@ -70,8 +70,9 @@
                         echo form_input('year', '', 'placeholder=Year') . '<br / >';
                         echo form_input('branch','', 'placeholder=Branch') . '<br / >';
                         echo form_submit('submit','Submit');
-                        echo form_close();
+                        
                     ?>
+                    <button><a href="<?php echo $base_url . 'welcome/login'?>">Log in</a></button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,0 @@
-asdflk;
-sadf;
-$
-                        

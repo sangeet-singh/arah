@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard - User</title>
+    <title>Dashboard - Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $assets; ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,7 @@
 
     <!-- Custom CSS -->
     <link href="<?php echo $assets; ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <script type="text/javascript" src="<?php echo $assets; ?>plugins/ckeditor/ckeditor.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -104,29 +105,63 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Personal Information</h1>
+                    <h1 class="page-header">Add Questions</h1>
                 </div>
             </div>
-            <div class="row highlight-box row-50">
-                <div class="col-lg-6 ">
-                    <div class="m-a-10">
-                        <ul class="list-unstyled">
-                            <li><p class="text-right">Name:</p></li>
-                            <li><p class="text-right">Institute:</p></li>
-                            <li><p class="text-right">Branch:</p></li>
-                            <li><p class="text-right">Year:</p></li>
-                        </ul>
-                    </div>
-                </div>
-                    <div class="m-a-10">
-                        <ul class="list-unstyled">
-                            <li><p><?php echo $name;?></p></li>
-                            <li><p><?php echo $institute;?></p></li>
-                            <li><p><?php echo $branch;?></p></li>
-                            <li><p><?php echo $year;?></p></li>
-                        </ul>
-                    </div>
-                <div class="col-lg-6">
+            <div class="row highlight-box">
+                <div class="col-md-10">
+                    <br>
+                    <?php
+                        $qid = array(
+                                'type' => 'number',
+                                'name' => 'qid',
+                                'class' => 'form-control',
+                                'required' => 'required'
+                                );
+                        $points = array(
+                                'type' => 'number',
+                                'name' => 'points',
+                                'class' => 'form-control',
+                                'required' => 'required'
+                                );
+                        $options = array(
+                                'Easy' => 'Easy',
+                                'Medium' => 'Medium',
+                                'Difficulty' => 'Difficulty'
+                                );
+                        $question = array(
+                                'name' => 'html',
+                                'class' => 'form-control',
+                                'id' => 'ck-question',
+                                'required' => 'required'
+                                );
+                        $title = array(
+                                'name' => 'title',
+                                'class' => 'form-control',
+                                'required' => 'required'
+                                );
+                        $result = array(
+                                'name' => 'result',
+                                'class' => 'form-control',
+                                'id' => 'ck-result',
+                                'required' => 'required'
+                                );
+                        $input = array(
+                                'name' => 'input',
+                                'class' => 'form-control',
+                                'id' => 'ck-input',
+                                'required' => 'required'
+                                );
+                        echo form_open($base_url . 'welcome/add_question', 'class="form-group"'); 
+                        echo "Question Number " . form_input($qid) . '<br / >';
+                        echo "Points " . form_input($points) . '<br / >';
+                        echo "Difficulty " . form_dropdown('difficulty',$options,'Easy','class="form-control"') . '<br / >';
+                        echo "Title" . form_input($title) . '<br/>';
+                        echo "Question " . form_textarea($question);
+                        echo "Input File " . form_textarea($input);
+                        echo "Result File " . form_textarea($result);
+                        echo form_submit('submit','submit','class="form-control btn btn-primary btn-custom ques-submit"');
+                    ?>
                 </div>
             </div>
         </div>

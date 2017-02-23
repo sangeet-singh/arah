@@ -58,10 +58,6 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
                         <li class="divider"></li>
                         <li>
                             <?php 
@@ -111,12 +107,6 @@
                 </div>
                 <div class="row" style="background:#fff">
                     <div class="col-md-10">
-                        <input type="hidden" id="prev-code" 
-                            value="<?php 
-                                        if(isset($code)){
-                                            echo $code;
-                                    }?>
-                                ">
                         <span id="editor1">
                         </span>
                     </div>
@@ -140,7 +130,6 @@
                             <p>
                                 <?php foreach ($error_message as $error) {
                                     echo $error . '<br>';
-
                                 }
                                 ?>
                             </p>
@@ -150,7 +139,6 @@
                 <?php }?>
             </div>
         </div>
-
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
@@ -180,16 +168,27 @@
         editor.setTheme("ace/theme/ambiance");
         editor.getSession().setMode("ace/mode/c_cpp");
         editor.setShowPrintMargin(false);
-        editor.setValue($('#prev-code').val(),-1);
+        
+        <?php
+            if(isset($code)){
+        ?>
+        var code = <?php echo json_encode($code)?>;
+        console.log(code);
+        <?php } else{ ?>
+        var code = '';
+        <?php }?>
+
+        editor.setValue(code,-1);
+        $('.editor2').val(code);
+        editor.blockScrolling = Infinity;
         $(document).ready(function(){
             $('#editor-select').on('change',function(){
                 var env = this.value;
                 editor.getSession().setMode("ace/mode/" + env);
             });
-            $('.btn-primary').click(function(e){
+            editor.getSession().on("change",function(e){
                 var data = editor.getValue();
                 $('.editor2').val(data);
-                
             });
         });
     </script>
